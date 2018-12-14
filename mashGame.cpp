@@ -14,5 +14,12 @@ int main()
 	std::cout << "MASH stands for Mansion, Apartment, Shack, House.\nIn MASH, you will be given a number of categories, including housing.\n" <<
 		"You will fill each category with four choices of that type.\nOnce the categories have been filled, a random number\n" <<
 		" will be selected for you and used to predict your future!" << std::endl;
+
+	//Collect choices under each category from user
+
+	//Generate random number
+
+	//Display fortune
+
 	return 0;
 }
