@@ -28,7 +28,7 @@ This project is closed to contributions at this time.
 * Samantha Guilbeault
 
 ## Licence
-This project is licensed under the MIT license - see the LICENSE.md file for details.
+This project is licensed under the MIT license - see the [LICENSE.md](../BeaverHacksWTeam8/master/LICENSE) file for details.
 
 ## Acknowledgments
 * A tip of the hat to the 1990's trapper keeper full of MASH scribbles.
