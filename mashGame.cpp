@@ -5,7 +5,7 @@
 
 void displayHomeScreen(), displayInstructions(), getChoices(std::string [], std::string[][4]), printChoices(std::string[], std::string[][4]), displayFortune();
 int getRand();
-std::string checkHousing(std::string array[][4]);
+std::string checkForLastChoice(std::string array[][4], int col);
 
 int main()
 {
@@ -35,12 +35,16 @@ int main()
 	
 	//Compute fortune
 	int choiceCounter = 0;
-	int emptyCounter = 0;
 	int nullCounter = 0;
+	bool eliminationIsDone = false;
 
-	std::string house;
+	std::string house = "";
+	std::string partner = "";
+	std::string kids = "";
+	std::string job = "";
+	std::string salary = "";
 
-	while (emptyCounter < 15)
+	while (!eliminationIsDone)
 	{
 		for (int n = 0; n < 5; n++)
 		{
@@ -61,19 +65,39 @@ int main()
 					choices[n][m] = "";
 
 					choiceCounter = 0;
-					emptyCounter++;
 
 					//Print new choice board to show user progress
 					printChoices(categories, choices);
 					std::cout << eliminated << " was eliminated" << std::endl;
 
 					//Check each category for a final choice
-					house = checkHousing(choices);
-					std::cout << "TEST: " << house << std::endl;
+					if (house == "")
+						house = checkForLastChoice(choices, 0);
+
+					if (partner == "")
+						partner = checkForLastChoice(choices, 1);
+
+					if (kids == "")
+						kids = checkForLastChoice(choices, 2);
+
+					if (job == "")
+						job = checkForLastChoice(choices, 3);
+
+					if (salary == "")
+						salary = checkForLastChoice(choices, 4);
+
+					std::cout << "TEST: " << std::endl;
+					std::cout << "House: " << house << std::endl;
+					std::cout << "Partner: " << partner << std::endl;
+					std::cout << "Kids: " << kids << std::endl;
+					std::cout << "Job: " << job << std::endl;
+					std::cout << "Salary: " << salary << std::endl;
 
 					system("pause");
 
-					
+					//Check if elimination is done to continue loop
+					if (house != "" && partner != "" && kids != "" && job != "" && salary != "")
+						eliminationIsDone = true;
 				}
 			}
 			nullCounter = 0;
@@ -194,31 +218,31 @@ void displayFortune()
 Function: string checkHousing(std::string array[][4])
 Description: checks housing category for final selection
 ************************************************************************************************/
-std::string checkHousing(std::string array[][4])
+std::string checkForLastChoice(std::string array[][4], int col)
 {
-	std::string house = "";
+	std::string lastChoice = "";
 
 	//If last choice in a category, save it to house and eliminate it from choices
-	if (array[0][0] == "" && array[0][1] == "" && array[0][2] == "")
+	if (array[col][0] == "" && array[col][1] == "" && array[col][2] == "")
 	{
-		house = array[0][3];
-		array[0][3] = "";
+		lastChoice = array[col][3];
+		array[col][3] = "";
 	}
-	else if (array[0][0] == "" && array[0][1] == "" && array[0][3] == "")
+	else if (array[col][0] == "" && array[col][1] == "" && array[col][3] == "")
 	{
-		house = array[0][2];
-		array[0][3] = "";
+		lastChoice = array[col][2];
+		array[col][3] = "";
 	}
-	else if (array[0][0] == "" && array[0][2] == "" && array[0][3] == "")
+	else if (array[col][0] == "" && array[col][2] == "" && array[col][3] == "")
 	{
-		house = array[0][1];
-		array[0][3] = "";
+		lastChoice = array[col][1];
+		array[col][3] = "";
 	}
-	else if (array[0][1] == "" && array[0][2] == "" && array[0][3] == "")
+	else if (array[col][1] == "" && array[col][2] == "" && array[col][3] == "")
 	{
-		house = array[0][0];
-		array[0][3] = "";
+		lastChoice = array[col][0];
+		array[col][3] = "";
 	}
 
-	return house;
+	return lastChoice;
 }
