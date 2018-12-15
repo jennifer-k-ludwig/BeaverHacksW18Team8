@@ -31,7 +31,7 @@ int main()
 	std::cout << "Your random number is " << luckyNumber << "." << std::endl;
 	std::cout << std::endl;
 
-	/*
+	
 	//Compute fortune
 	int choiceCounter = 0;
 	int emptyCounter = 0;
@@ -43,21 +43,33 @@ int main()
 		{
 			for (int m = 0; m < 4; m++)
 			{
-				//each choice is counted
-				choiceCounter++;
+				//each choice is counted if not null
+				if (choices[n][m] != "")
+				{
+					choiceCounter++;
+				}
 				//if the choice number is equal to the lucky number, it will be set to a null string
 				if (choiceCounter == luckyNumber)
 				{
+					//Save choice for elimination readout
+					std::string eliminated = choices[n][m];
+
+					//Eliminate choice
 					choices[n][m] = "";
+
 					choiceCounter = 0;
 					emptyCounter++;
+
+					//Print new choice board to show user progress
+					printChoices(categories, choices);
+					std::cout << eliminated << " was eliminated" << std::endl;
+					system("pause");
 				}
 			}
 			nullCounter = 0;
 		}
 	}
 		
-	*/
 
 	//Display fortune
 	displayFortune();
