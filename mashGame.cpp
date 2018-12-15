@@ -1,4 +1,4 @@
-
+#include "pch.h"
 #include<iostream>
 #include<string>
 #include<ctime> //for random number generator
@@ -73,7 +73,6 @@ void displayHomeScreen()
 {
 	std::cout << "Welcome to MASH!" << std::endl;
 	std::cout << "MASH is a game that predicts your future." << std::endl;
-	std::cout << "Enter any key to continue or q to quit." << std::endl; //need to add this functionality
 	std::cout << std::endl;
 }
 
@@ -89,6 +88,9 @@ void displayInstructions()
 	std::cout << "You will fill each category with four choices of that type." << std::endl;
 	std::cout << "Once the categories have been filled, a random number" << std::endl;
 	std::cout << "will be selected for you and used to predict your future!" << std::endl;
+	std::cout << std::endl;
+
+	system("pause");
 	std::cout << std::endl;
 }
 
