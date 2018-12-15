@@ -5,6 +5,7 @@
 
 void displayHomeScreen(), displayInstructions(), getChoices(std::string [], std::string[][4]), printChoices(std::string[], std::string[][4]), displayFortune();
 int getRand();
+std::string checkHousing(std::string array[][4]);
 
 int main()
 {
@@ -37,6 +38,8 @@ int main()
 	int emptyCounter = 0;
 	int nullCounter = 0;
 
+	std::string house;
+
 	while (emptyCounter < 15)
 	{
 		for (int n = 0; n < 5; n++)
@@ -63,10 +66,14 @@ int main()
 					//Print new choice board to show user progress
 					printChoices(categories, choices);
 					std::cout << eliminated << " was eliminated" << std::endl;
-					system("pause");
 
 					//Check each category for a final choice
-					//bool checkHousing()
+					house = checkHousing(choices);
+					std::cout << "TEST: " << house << std::endl;
+
+					system("pause");
+
+					
 				}
 			}
 			nullCounter = 0;
@@ -181,4 +188,37 @@ Description: Displays fortune to user.
 void displayFortune()
 {
 	std::cout << "Congratulations! We have successfully determined your future." << std::endl;
+}
+
+/************************************************************************************************
+Function: string checkHousing(std::string array[][4])
+Description: checks housing category for final selection
+************************************************************************************************/
+std::string checkHousing(std::string array[][4])
+{
+	std::string house = "";
+
+	//If last choice in a category, save it to house and eliminate it from choices
+	if (array[0][0] == "" && array[0][1] == "" && array[0][2] == "")
+	{
+		house = array[0][3];
+		array[0][3] = "";
+	}
+	else if (array[0][0] == "" && array[0][1] == "" && array[0][3] == "")
+	{
+		house = array[0][2];
+		array[0][3] = "";
+	}
+	else if (array[0][0] == "" && array[0][2] == "" && array[0][3] == "")
+	{
+		house = array[0][1];
+		array[0][3] = "";
+	}
+	else if (array[0][1] == "" && array[0][2] == "" && array[0][3] == "")
+	{
+		house = array[0][0];
+		array[0][3] = "";
+	}
+
+	return house;
 }
