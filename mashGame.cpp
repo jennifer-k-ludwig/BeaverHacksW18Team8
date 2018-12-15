@@ -1,8 +1,10 @@
+
 #include<iostream>
 #include<string>
 #include<ctime> //for random number generator
 
-void displayHomeScreen(), displayInstructions(), getChoices(std::string [], std::string[][4]), printChoices(std::string[], std::string[][4]), getRand(), displayFortune();
+void displayHomeScreen(), displayInstructions(), getChoices(std::string [], std::string[][4]), printChoices(std::string[], std::string[][4]), displayFortune();
+int getRand();
 
 int main()
 {
@@ -25,7 +27,9 @@ int main()
 	printChoices(categories, choices);
 
 	//Generate random number
-	getRand();
+	int luckyNumber = getRand();
+	std::cout << "Your random number is " << luckyNumber << "." << std::endl;
+	std::cout << std::endl;
 
 	/*
 	//Compute fortune
@@ -134,16 +138,15 @@ void printChoices(std::string array1[], std::string array2[][4])
 Function: void getRand()
 Description: Outputs users random number to console.
 ************************************************************************************************/
-void getRand()
+int getRand()
 {
 	//seed the random number generator using time
 	srand(time(NULL));
 
-	//assign random number (between 2 and 11) to variable
-	int luckyNumber = (rand() % 10) + 2; 
+	//return random number (between 2 and 11) to variable
+	return (rand() % 10) + 2; 
 
-	std::cout << "Your random number is " << luckyNumber << "." << std::endl;
-	std::cout << std::endl;
+	
 }
 
 /************************************************************************************************
