@@ -2,7 +2,7 @@
 #include<string>
 #include<ctime> //for random number generator
 
-void displayHomeScreen(), displayInstructions(), getChoices(std::string [], std::string[][4]), printChoices(std::string[], std::string[][4]), getRand(), displayFortune();
+void displayHomeScreen(), displayInstructions(), getChoices(std::string [], std::string[][4]), printChoices(std::string[], std::string[][4]), displayFortune();
 
 int main()
 {
@@ -13,47 +13,57 @@ int main()
 	displayInstructions();
 
 	//Collect four choices under each category from user (except for housing)
-	//Categories: housing(MASH), Partner, Kids, Job, Salary
+	//Define list of categories
 	std::string categories[5] = { "Housing", "Partner", "Kids", "Job", "Salary" };
 
-	//the rows are categories and the columns are choices
+	//Define choices in each category
 	std::string choices[5][4] = { {"Mansion", "Apartment", "Shack", "House"} }; 
 	
+	//Get choices from user
 	getChoices(categories, choices);
 
-	//outputs contents of array (for testing)
+	//Output contents of array (for testing)
 	printChoices(categories, choices);
 
 	//Generate random number
-	getRand();
+	//seed the random number generator using time
+	srand(time(NULL));
 
-	/*
+	//assign random number (between 2 and 11) to variable
+	int luckyNumber = (rand() % 10) + 2;
+	std::cout << "Your random number is " << luckyNumber << "." << std::endl;
+	std::cout << "************************************************************************" << std::endl;
+	std::cout << std::endl; 
+	
 	//Compute fortune
-	int choiceCounter = 0;
-	int emptyCounter = 0;
-	int nullCounter = 0;
+	int choiceCounter = 0, categoryComplete = 0, nullCounter = 0;
 
-	while (emptyCounter < 15)
+	while (categoryComplete < 5)
 	{
 		for (int n = 0; n < 5; n++)
 		{
 			for (int m = 0; m < 4; m++)
 			{
-				//each choice is counted
-				choiceCounter++;
-				//if the choice number is equal to the lucky number, it will be set to a null string
-				if (choiceCounter == luckyNumber)
+				if (choices[n][m] != "")
+				{ 
+					choiceCounter++;
+					if (choiceCounter == luckyNumber)
+					{
+						choices[n][m] = "";
+						choiceCounter = 0;
+					}
+				}
+				else if (choices[n][m] == "")
 				{
-					choices[n][m] = "";
-					choiceCounter = 0;
-					emptyCounter++;
+					nullCounter++;
+					if (nullCounter == 3);
+						categoryComplete++;
 				}
 			}
-			nullCounter = 0;
 		}
 	}
-		
-	*/
+
+	printChoices(categories, choices);
 
 	//Display fortune
 	displayFortune();
@@ -128,22 +138,6 @@ void printChoices(std::string array1[], std::string array2[][4])
 		std::cout << std::endl;
 		count++;
 	}
-}
-
-/************************************************************************************************
-Function: void getRand()
-Description: Outputs users random number to console.
-************************************************************************************************/
-void getRand()
-{
-	//seed the random number generator using time
-	srand(time(NULL));
-
-	//assign random number (between 2 and 11) to variable
-	int luckyNumber = (rand() % 10) + 2; 
-
-	std::cout << "Your random number is " << luckyNumber << "." << std::endl;
-	std::cout << std::endl;
 }
 
 /************************************************************************************************
