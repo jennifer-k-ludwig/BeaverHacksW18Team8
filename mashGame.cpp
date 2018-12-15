@@ -64,6 +64,9 @@ int main()
 					printChoices(categories, choices);
 					std::cout << eliminated << " was eliminated" << std::endl;
 					system("pause");
+
+					//Check each category for a final choice
+					//bool checkHousing()
 				}
 			}
 			nullCounter = 0;
@@ -113,6 +116,14 @@ Description: Gets choices from user.
 void getChoices(std::string array1[], std::string array2[][4])
 {
 	int count = 0;
+
+	//Show housing category with prefilled options
+	std::cout << "Category: Housing" << std::endl;
+	for (int i = 0; i < 4; i++)
+	{
+		std::cout << i + 1 << ". " << array2[0][i] << std::endl;
+	}
+	std::cout << std::endl;
 
 	for (int i = 1; i < 5; i++)
 	{
