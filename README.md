@@ -20,7 +20,7 @@ At the end, you get to see your fortune
 ![mashfortune](https://user-images.githubusercontent.com/29582864/50057257-c914f880-0135-11e9-98f7-6eaa800ab1dd.png)
 
 ## Deployment
-To deploy and play MASH visit our REPL at (link to repl.it)
+To deploy and play MASH, check it out on [Repl.it](https://repl.it/@jkluds/BeaverHacksW18Gaminlikeits1999)
 
 ## Built With
 * C++
