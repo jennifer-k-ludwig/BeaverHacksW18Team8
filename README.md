@@ -4,7 +4,7 @@ of a future life, including Home, Partner, Kids, Job, and Salary. The user will 
 and asked to enter 4 possible outcomes for them. After the user has completed their personalization, they will be given a lucky 
 number and the game will predict their future!
 
-
+![mashhomescreen](https://user-images.githubusercontent.com/29582864/50056741-9e737180-012e-11e9-8c41-898e80364650.png)
 
 ## Usage
 ```
