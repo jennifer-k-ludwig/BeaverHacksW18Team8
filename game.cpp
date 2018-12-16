@@ -96,8 +96,6 @@ void Game::runGame()
 	int nullCounter = 0;
 	bool eliminationIsDone = false;
 
-	
-
 	while (!eliminationIsDone)
 	{
 		for (int n = 0; n < 5; n++)
@@ -139,11 +137,10 @@ void Game::runGame()
 					//Print new choice board to show user progress
 					printChoices();
 					std::cout << eliminated << " was eliminated" << std::endl;
-					
-					//Pause game after each elimination
-					std::cout << "Press enter to continue..." << std::endl;
-          				std::cin.ignore(1, '\n');
 
+				  std::cout << "Press enter to continue..." << std::endl;
+          std::cin.ignore(1, '\n');
+          
 					//Check if elimination is done to continue loop
 					if (house != "" && partner != "" && kids != "" && job != "" && salary != "")
 						eliminationIsDone = true;
@@ -196,10 +193,10 @@ Description: Displays fortune to user.
 
 void Game::displayFortune()
 {
-	std::cout << std::endl;
-	std::cout << "Congratulations! We have successfully determined your future." << std::endl;
-	std::cout << "You will live in a " << house << " with your partner, " << partner << ", and your "
-		<< kids << " children." << std::endl;
-	std::cout << "You will work as a " << job << " and make " << salary << " per year."
-		<< std::endl;
+	std::cout << "Congratulations!" << std::endl;
+  std::cout << "We have successfully determined your future." << std::endl;
+  std::cout << std::endl;
+	std::cout << "You will live in a " << house << " with your partner, " << partner << "," << std::endl;
+  std::cout << "and your " << kids << " children. You will work as a " << job << std::endl;
+	std::cout << "and make " << salary << " per year." << std::endl;
 }
