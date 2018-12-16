@@ -30,8 +30,8 @@ void Menu::displayInstructions()
 }
 
 /************************************************************************************************
-Function: void getChoices()
-Description: Gets choices from user.
+Function: void playGame()
+Description: Runs game objects.
 ************************************************************************************************/
 void Menu::playGame()
 {
