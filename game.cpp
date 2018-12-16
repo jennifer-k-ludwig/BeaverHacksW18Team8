@@ -1,6 +1,4 @@
-#include "pch.h"
 #include "game.hpp"
-#include <windows.h>
 
 /************************************************************************************************
 Function: Game()
@@ -141,8 +139,10 @@ void Game::runGame()
 					//Print new choice board to show user progress
 					printChoices();
 					std::cout << eliminated << " was eliminated" << std::endl;
-
-					Sleep(1500);
+					
+					//Pause game after each elimination
+					std::cout << "Press enter to continue..." << std::endl;
+          				std::cin.ignore(1, '\n');
 
 					//Check if elimination is done to continue loop
 					if (house != "" && partner != "" && kids != "" && job != "" && salary != "")
