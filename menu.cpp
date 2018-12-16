@@ -1,4 +1,5 @@
 #include "menu.hpp"
+#include "game.hpp"
 
 /************************************************************************************************
 Function: void displayHomeScreen()
@@ -13,8 +14,9 @@ void Menu::displayHomescreen()
 }
 
 /************************************************************************************************
-Function: void getChoices()
-Description: Gets choices from user.
+Function: void displayInstructions()
+Description: Displays instructions on console.
+>>>>>>> jen
 ************************************************************************************************/
 
 void Menu::displayInstructions()
@@ -28,4 +30,25 @@ void Menu::displayInstructions()
 	std::cout << std::endl;
 	std::cout << "Press enter to play..." << std::endl;
 	std::cin.ignore(1, '\n');
+}
+
+/************************************************************************************************
+Function: void playGame()
+Description: Runs game objects.
+************************************************************************************************/
+void Menu::playGame()
+{
+	Game game;
+
+	//Gets choices under each category from user
+	game.getChoices();
+
+	//Output contents of array (for testing)
+	game.printChoices();
+
+	//Run game
+	game.runGame();
+
+	//Display fortune
+	game.displayFortune();
 }

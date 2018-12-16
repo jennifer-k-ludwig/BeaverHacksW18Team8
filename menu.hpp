@@ -8,5 +8,6 @@ class Menu
 public:
   void displayHomescreen();
   void displayInstructions();
+  void playGame();
 };
 #endif

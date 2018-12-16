@@ -19,8 +19,6 @@ Description: Gets choices from user.
 ************************************************************************************************/
 void Game::getChoices()
 {
-	int count = 0;
-
 	//Show housing category with prefilled options
 	std::cout << "Category: Housing" << std::endl;
 	for (int i = 0; i < 4; i++)
@@ -28,6 +26,8 @@ void Game::getChoices()
 		std::cout << i + 1 << ". " << choices[0][i] << std::endl;
 	}
 	std::cout << std::endl;
+	
+	int count = 0;
 
 	for (int i = 1; i < 5; i++)
 	{
@@ -57,8 +57,7 @@ void Game::printChoices()
 		for (int j = 0; j < 4; j++)
 		{
 			std::cout << j + 1 << ". ";
-			std::cout << choices[i][j];
-			std::cout << std::endl;
+			std::cout << choices[i][j] << std::endl;
 		}
 		std::cout << std::endl;
 		count++;
@@ -118,26 +117,16 @@ void Game::runGame()
 					//Eliminate choice
 					choices[n][m] = "";
 
-					choiceCounter = 0;
-
-					//Check each category for a final choice
-					if (house == "")
-						house = checkForLastChoice(0);
-
-					if (partner == "")
-						partner = checkForLastChoice(1);
-
-					if (kids == "")
-						kids = checkForLastChoice(2);
-
-					if (job == "")
-						job = checkForLastChoice(3);
-
-					if (salary == "")
-						salary = checkForLastChoice(4);
+					//Set category variable to final choice in each category
+					setHouse();
+					setPartner();
+					setKids();
+					setJob();
+					setSalary();
 
 					//Print new choice board to show user progress
 					printChoices();
+
 					std::cout << eliminated << " was eliminated" << std::endl;
 
 					std::cout << "Press enter to continue..." << std::endl;
@@ -146,6 +135,9 @@ void Game::runGame()
 					//Check if elimination is done to continue loop
 					if (house != "" && partner != "" && kids != "" && job != "" && salary != "")
 						eliminationIsDone = true;
+
+					//Reset choice counter
+					choiceCounter = 0;
 				}
 			}
 			nullCounter = 0;
@@ -159,30 +151,30 @@ Function: string checkForLastChoice(int col)
 Description: Checks each category for final selection.
 ************************************************************************************************/
 
-std::string Game::checkForLastChoice(int col)
+std::string Game::checkForLastChoice(int row)
 {
 	std::string lastChoice = "";
 
 	//If last choice in a category, save it to house and eliminate it from choices
-	if (choices[col][0] == "" && choices[col][1] == "" && choices[col][2] == "")
+	if (choices[row][0] == "" && choices[row][1] == "" && choices[row][2] == "")
 	{
-		lastChoice = choices[col][3];
-		choices[col][3] = "";
+		lastChoice = choices[row][3];
+		choices[row][3] = "";
 	}
-	else if (choices[col][0] == "" && choices[col][1] == "" && choices[col][3] == "")
+	else if (choices[row][0] == "" && choices[row][1] == "" && choices[row][3] == "")
 	{
-		lastChoice = choices[col][2];
-		choices[col][3] = "";
+		lastChoice = choices[row][2];
+		choices[row][3] = "";
 	}
-	else if (choices[col][0] == "" && choices[col][2] == "" && choices[col][3] == "")
+	else if (choices[row][0] == "" && choices[row][2] == "" && choices[row][3] == "")
 	{
-		lastChoice = choices[col][1];
-		choices[col][3] = "";
+		lastChoice = choices[row][1];
+		choices[row][3] = "";
 	}
-	else if (choices[col][1] == "" && choices[col][2] == "" && choices[col][3] == "")
+	else if (choices[row][1] == "" && choices[row][2] == "" && choices[row][3] == "")
 	{
-		lastChoice = choices[col][0];
-		choices[col][3] = "";
+		lastChoice = choices[row][0];
+		choices[row][3] = "";
 	}
 
 	return lastChoice;
@@ -198,7 +190,7 @@ void Game::displayFortune()
 	std::cout << "Congratulations!" << std::endl;
   std::cout << "We have successfully determined your future." << std::endl;
   std::cout << std::endl;
-	std::cout << "You will live in a " << house << " with your partner, " << partner << "," << std::endl;
-  std::cout << "and your " << kids << " children. You will work as a " << job << std::endl;
-	std::cout << "and make " << salary << " per year." << std::endl;
+	std::cout << "You will live in a " << getHouse() << " with your partner, " << getPartner() << "," << std::endl;
+  std::cout << "and your " << getKids() << " children. You will work as a " << getJob() << std::endl;
+	std::cout << "and make " << getSalary() << " per year." << std::endl;
 }

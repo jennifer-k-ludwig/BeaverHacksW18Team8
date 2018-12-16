@@ -1,28 +1,19 @@
 #include "game.hpp"
 #include "menu.hpp"
+#include <iostream>
 
 int main()
 {
-	Game game;
 	Menu menu;
 
-	//Home Screen
+	//Homescreen
 	menu.displayHomescreen();
 
 	//Instructions
 	menu.displayInstructions();
-	
-	//Gets choices under each category from user
-	game.getChoices();
 
-	//Output contents of array (for testing)
-	game.printChoices();
-
-	//Run game
-	game.runGame();
-
-	//Display fortune
-	game.displayFortune();
+	//Play game
+	menu.playGame();
 
 	return 0;
 }
