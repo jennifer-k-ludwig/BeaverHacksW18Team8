@@ -1,7 +1,6 @@
 # MASH
 MASH is a game that is intended to predict one's future. This game consists of several categories, each of which represent a part
-of a future life, including Home, Partner, Kids, Job, and Salary. The user will be presented with each category, one at a time,
-and asked to enter 4 possible outcomes for them. After the user has completed their personalization, they will be given a random 
+of a future life, including Home, Partner, Number of Kids, Job, and Salary. The user will be presented with each category, one at a time, and asked to enter 4 possible outcomes for them. After the user has completed their personalization, they will be given a random 
 number and the game will use it to predict their future!
 
 ![mashhomescreen](https://user-images.githubusercontent.com/29582864/50056741-9e737180-012e-11e9-8c41-898e80364650.png)
