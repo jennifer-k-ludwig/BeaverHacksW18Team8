@@ -23,7 +23,9 @@ void Menu::displayInstructions()
 	std::cout << "MASH stands for Mansion, Apartment, Shack, House." << std::endl;
 	std::cout << "In MASH, you will be given a number of categories, including housing." << std::endl;
 	std::cout << "You will fill each category with four choices of that type." << std::endl;
-	std::cout << "Once the categories have been filled, a random number" << std::endl;
-	std::cout << "will be selected for you and used to predict your future!" << std::endl;
+	std::cout << "Once the categories have been filled, you will be given a lucky" << std::endl;
+	std::cout << "number and it will be used to predict your future!" << std::endl;
 	std::cout << std::endl;
+	std::cout << "Press enter to play..." << std::endl;
+	std::cin.ignore(1, '\n');
 }

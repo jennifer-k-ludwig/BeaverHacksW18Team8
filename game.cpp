@@ -88,8 +88,10 @@ void Game::runGame()
 {
   	//Generate random number
 	int luckyNumber = getRand();
-	std::cout << "Your random number is " << luckyNumber << "." << std::endl;
+	std::cout << "Your lucky number is " << luckyNumber << "!!" << std::endl;
 	std::cout << std::endl;
+	std::cout << "Press enter to start eliminating..." << std::endl;
+	std::cin.ignore(1, '\n');
 
 	//Compute fortune
 	int choiceCounter = 0;
@@ -138,8 +140,8 @@ void Game::runGame()
 					printChoices();
 					std::cout << eliminated << " was eliminated" << std::endl;
 
-				  std::cout << "Press enter to continue..." << std::endl;
-          std::cin.ignore(1, '\n');
+					std::cout << "Press enter to continue..." << std::endl;
+					std::cin.ignore(1, '\n');
           
 					//Check if elimination is done to continue loop
 					if (house != "" && partner != "" && kids != "" && job != "" && salary != "")
