@@ -1,5 +1,6 @@
-
+#include "pch.h"
 #include "game.hpp"
+#include <windows.h>
 
 /************************************************************************************************
 Function: Game()
@@ -7,7 +8,11 @@ Description: Gets choices from user.
 ************************************************************************************************/
 Game::Game()
 {
-	
+	house = "";
+	partner = "";
+	kids = "";
+	job = "";
+	salary = "";
 }
 
 /************************************************************************************************
@@ -63,7 +68,7 @@ void Game::printChoices()
 }
 
 /************************************************************************************************
-Function: void getRand()
+Function: int getRand()
 Description: Outputs users random number to console.
 ************************************************************************************************/
 int Game::getRand()
@@ -93,11 +98,7 @@ void Game::runGame()
 	int nullCounter = 0;
 	bool eliminationIsDone = false;
 
-	std::string house = "";
-	std::string partner = "";
-	std::string kids = "";
-	std::string job = "";
-	std::string salary = "";
+	
 
 	while (!eliminationIsDone)
 	{
@@ -121,10 +122,6 @@ void Game::runGame()
 
 					choiceCounter = 0;
 
-					//Print new choice board to show user progress
-					printChoices();
-					std::cout << eliminated << " was eliminated" << std::endl;
-
 					//Check each category for a final choice
 					if (house == "")
 						house = checkForLastChoice(0);
@@ -141,13 +138,11 @@ void Game::runGame()
 					if (salary == "")
 						salary = checkForLastChoice(4);
 
-					std::cout << "House: " << house << std::endl;
-					std::cout << "Partner: " << partner << std::endl;
-					std::cout << "Number of Kids: " << kids << std::endl;
-					std::cout << "Job: " << job << std::endl;
-					std::cout << "Salary: " << salary << std::endl;
+					//Print new choice board to show user progress
+					printChoices();
+					std::cout << eliminated << " was eliminated" << std::endl;
 
-					system("pause");
+					Sleep(1500);
 
 					//Check if elimination is done to continue loop
 					if (house != "" && partner != "" && kids != "" && job != "" && salary != "")
@@ -201,8 +196,9 @@ Description: Displays fortune to user.
 
 void Game::displayFortune()
 {
+	std::cout << std::endl;
 	std::cout << "Congratulations! We have successfully determined your future." << std::endl;
-	std::cout << "You will live in a " << house << " with your partner, " << partner << ", and "
+	std::cout << "You will live in a " << house << " with your partner, " << partner << ", and your "
 		<< kids << " children." << std::endl;
 	std::cout << "You will work as a " << job << " and make " << salary << " per year."
 		<< std::endl;
